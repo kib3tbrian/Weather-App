@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App - Portfolio Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Weather App</h1>
+            <p class="subtitle">Get real-time weather information for any city</p>
+        </header>
+
+        <main class="main">
+            <div class="search-section">
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        id="cityInput" 
+                        class="search-input" 
+                        placeholder="Enter city name..."
+                        autocomplete="off"
+                    >
+                    <button id="searchBtn" class="search-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+                <button id="locationBtn" class="location-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Use Current Location
+                </button>
+            </div>
+
+            <div id="loadingSpinner" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Loading weather data...</p>
+            </div>
+
+            <div id="errorMessage" class="error hidden">
+                <div class="error-icon">⚠️</div>
+                <p id="errorText">Something went wrong</p>
+            </div>
+
+            <div id="weatherCard" class="weather-card hidden">
+                <div class="weather-header">
+                    <div class="location-info">
+                        <h2 id="cityName" class="city-name"></h2>
+                        <p id="countryName" class="country-name"></p>
+                        <p id="currentTime" class="current-time"></p>
+                    </div>
+                    <div class="weather-icon-container">
+                        <img id="weatherIcon" class="weather-icon" alt="Weather icon">
+                    </div>
+                </div>
+
+                <div class="temperature-section">
+                    <div class="main-temp">
+                        <span id="temperature" class="temperature"></span>
+                        <span class="temp-unit">°C</span>
+                    </div>
+                    <div class="temp-details">
+                        <p id="description" class="weather-description"></p>
+                        <p class="feels-like">Feels like <span id="feelsLike"></span>°C</p>
+                    </div>
+                </div>
+
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">💨</div>
+                        <div class="detail-info">
+                            <span class="detail-label">Wind Speed</span>
+                            <span id="windSpeed" class="detail-value"></span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">💧</div>
+                        <div class="detail-info">
+                            <span class="detail-label">Humidity</span>
+                            <span id="humidity" class="detail-value"></span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">👁️</div>
+                        <div class="detail-info">
+                            <span class="detail-label">Visibility</span>
+                            <span id="visibility" class="detail-value"></span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">🌡️</div>
+                        <div class="detail-info">
+                            <span class="detail-label">Pressure</span>
+                            <span id="pressure" class="detail-value"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="forecast-section">
+                    <h3 class="forecast-title">5-Day Forecast</h3>
+                    <div id="forecast" class="forecast-container"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Built with ❤️ by kib3tbrian</p>
+            <p class="api-credit">Weather data provided by OpenWeatherMap</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
